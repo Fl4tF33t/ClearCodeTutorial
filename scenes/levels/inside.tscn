@@ -1,0 +1,110 @@
+[gd_scene load_steps=11 format=4 uid="uid://cagrw7g1hexxe"]
+
+[ext_resource type="PackedScene" uid="uid://drcudw1pdxnra" path="res://scenes/levels/level.tscn" id="1_qnv2h"]
+[ext_resource type="Script" path="res://scenes/levels/inside.gd" id="2_3cj0c"]
+[ext_resource type="Texture2D" uid="uid://c383yvjm2dmnd" path="res://graphics/ground/dirt.png" id="2_bjwis"]
+[ext_resource type="TileSet" uid="uid://c1eiixk7pah7l" path="res://scenes/houses/house.tres" id="2_fht4w"]
+[ext_resource type="PackedScene" uid="uid://cxn34477sr43u" path="res://scenes/objects/lights/light_fan_animation.tscn" id="4_mmdiy"]
+[ext_resource type="Texture2D" uid="uid://edglpxlr1k2i" path="res://graphics/lights/textures/circle.png" id="4_ojxfe"]
+[ext_resource type="PackedScene" uid="uid://dsmyvyg4kh04u" path="res://scenes/objects/lights/simple_light.tscn" id="5_6qlqv"]
+[ext_resource type="PackedScene" uid="uid://djpiuxlwoqorw" path="res://scenes/objects/lights/wall_light.tscn" id="6_rpl8f"]
+[ext_resource type="PackedScene" uid="uid://dfhhn0sh0t7ss" path="res://scenes/items/item.tscn" id="9_1v1dc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqmt5"]
+size = Vector2(174, 321)
+
+[node name="Inside" instance=ExtResource("1_qnv2h")]
+script = ExtResource("2_3cj0c")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="0"]
+color = Color(0.493545, 0.493546, 0.493546, 0.752941)
+blend_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground" index="0"]
+texture_repeat = 2
+texture = ExtResource("2_bjwis")
+region_enabled = true
+region_rect = Rect2(-3000, -1500, 15000, 10000)
+
+[node name="FloorTM" type="TileMapLayer" parent="Ground" index="1"]
+tile_map_data = PackedByteArray("AAAFAAAAAAACAAAAAAAFAAEAAAABAAMAAAAEAAEAAAABAAEAAAADAAEAAAABAAEAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAACAAAAAAABAAAAAAABAAAAAAAAAAUAAAAAAAAAAAABAAEAAAD//wAAAAABAAEAAAD+/wAAAAABAAEAAAD9/wAAAAABAAEAAAD8/wAAAAABAAEAAAD7/wAAAAABAAEAAAD6/wAAAAABAAUAAAD6/wEAAAABAAEAAAD7/wEAAAABAAEAAAD7/wIAAAABAAEAAAD7/wMAAAABAAIAAAD8/wMAAAABAAIAAAD9/wEAAAABAAEAAAD9/wIAAAABAAEAAAD9/wMAAAABAAQAAAD9/wQAAAAAAAEAAAD9/wUAAAAAAAIAAAD+/wEAAAABAAEAAAD+/wIAAAABAAEAAAD+/wMAAAABAAEAAAD+/wQAAAABAAEAAAD+/wUAAAABAAIAAAD//wEAAAABAAEAAAD//wIAAAABAAEAAAD//wMAAAABAAEAAAD//wQAAAABAAEAAAD//wUAAAABAAIAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAIAAAABAAEAAAABAAEAAAABAAIAAAABAAEAAAABAAMAAAABAAEAAAABAAQAAAABAAEAAAABAAUAAAABAAIAAAACAAEAAAABAAEAAAACAAIAAAAAAAQAAAACAAMAAAACAAEAAAACAAQAAAACAAEAAAACAAUAAAACAAIAAAD3/wAAAAAAAAAAAAD3/wEAAAAAAAEAAAD3/wIAAAAAAAEAAAD3/wMAAAAAAAEAAAD4/wAAAAABAAAAAAD4/wEAAAABAAEAAAD4/wIAAAABAAEAAAD4/wMAAAAAAAQAAAD5/wAAAAABAAAAAAD5/wEAAAABAAEAAAD5/wIAAAABAAEAAAD5/wMAAAABAAIAAAD6/wIAAAABAAEAAAD6/wMAAAABAAIAAAD8/wEAAAABAAEAAAD8/wIAAAABAAEAAAD6//f/AAAAAAAAAAD6//j/AAABAAUAAAD6//n/AAABAAEAAAD6//r/AAABAAEAAAD6//v/AAABAAEAAAD6//z/AAABAAEAAAD6//3/AAABAAQAAAD6//7/AAAAAAEAAAD6////AAAAAAEAAAD7//f/AAABAAAAAAD7//j/AAABAAEAAAD7//n/AAABAAEAAAD7//r/AAABAAEAAAD7//v/AAABAAEAAAD7//z/AAABAAEAAAD7//3/AAABAAEAAAD7//7/AAABAAEAAAD7////AAABAAEAAAD8//f/AAABAAAAAAD8//j/AAABAAEAAAD8//n/AAABAAEAAAD8//r/AAABAAEAAAD8//v/AAABAAEAAAD8//z/AAABAAEAAAD8//3/AAABAAEAAAD8//7/AAABAAEAAAD8////AAABAAEAAAD9//f/AAABAAAAAAD9//j/AAABAAEAAAD9//n/AAABAAEAAAD9//r/AAABAAEAAAD9//v/AAABAAEAAAD9//z/AAABAAEAAAD9//3/AAABAAEAAAD9//7/AAABAAEAAAD9////AAABAAEAAAD+//f/AAABAAAAAAD+//j/AAABAAEAAAD+//n/AAABAAEAAAD+//r/AAABAAEAAAD+//v/AAABAAEAAAD+//z/AAABAAEAAAD+//3/AAABAAEAAAD+//7/AAABAAEAAAD+////AAABAAEAAAD///f/AAABAAAAAAD///j/AAABAAEAAAD///n/AAABAAEAAAD///r/AAABAAEAAAD///v/AAABAAEAAAD///z/AAABAAEAAAD///3/AAABAAEAAAD///7/AAABAAEAAAD/////AAABAAEAAAAAAPf/AAABAAAAAAAAAPj/AAABAAEAAAAAAPn/AAABAAEAAAAAAPr/AAABAAEAAAAAAPv/AAABAAEAAAAAAPz/AAABAAEAAAAAAP3/AAABAAEAAAAAAP7/AAABAAEAAAAAAP//AAABAAEAAAABAPf/AAACAAAAAAABAPj/AAACAAEAAAABAPn/AAACAAEAAAABAPr/AAACAAEAAAABAPv/AAACAAEAAAABAPz/AAACAAEAAAABAP3/AAACAAEAAAABAP7/AAACAAEAAAABAP//AAACAAEAAAD2//r/AAAAAAEAAAD2//v/AAAAAAEAAAD2//z/AAAAAAEAAAD2//3/AAAAAAIAAAD3//r/AAABAAEAAAD3//v/AAABAAEAAAD3//z/AAABAAEAAAD3//3/AAABAAIAAAD4//r/AAABAAEAAAD4//v/AAABAAEAAAD4//z/AAABAAEAAAD4//3/AAABAAIAAAD5//r/AAABAAEAAAD5//v/AAABAAEAAAD5//z/AAABAAEAAAD5//3/AAABAAIAAAD2//j/AAAAAAAAAAD2//n/AAAAAAEAAAD3//n/AAABAAEAAAD4//j/AAABAAAAAAD4//n/AAABAAEAAAD5//j/AAABAAAAAAD5//n/AAABAAEAAAD3/wQAAAAAAAEAAAD3/wUAAAAAAAIAAAD4/wQAAAACAAEAAAD4/wUAAAACAAIAAAAEAAIAAAABAAIAAAADAAIAAAABAAIAAAAFAAIAAAACAAIAAAD3//j/AAABAAAAAAA=")
+tile_set = ExtResource("2_fht4w")
+
+[node name="InnerWallsTM" type="TileMapLayer" parent="Ground" index="2"]
+tile_map_data = PackedByteArray("AAD9/wAAAAADAAYAAAD6//r/AAADAAYAAAD+//r/AAADAAYAAAD9/wEAAAABAAYAAAD9/wIAAAABAAYAAAD9/wMAAAABAAYAAAABAAAAAAAAAAYAAAAAAAAAAAAAAAYAAAD+/wAAAAAAAAYAAAD6/wAAAAAAAAYAAAD7/wAAAAAAAAYAAAD9////AAABAAYAAAD9//7/AAABAAYAAAD9//3/AAACAAcAAAD+//3/AAABAAgAAAD+//z/AAABAAYAAAD///r/AAAAAAYAAAAAAPr/AAAAAAYAAAABAPr/AAAGAAcAAAD+//n/AAABAAYAAAD+//f/AAAFAAYAAAD8//3/AAADAAgAAAD6//3/AAADAAgAAAD8//z/AAABAAYAAAD8//v/AAABAAYAAAD8//r/AAACAAcAAAD6//z/AAABAAYAAAD6//v/AAABAAYAAAD5//r/AAAAAAYAAAD2//r/AAAEAAcAAAD3//r/AAAAAAYAAAD6//j/AAABAAYAAAA=")
+tile_set = ExtResource("2_fht4w")
+
+[node name="OuterWallsTM" type="TileMapLayer" parent="Ground" index="3"]
+tile_map_data = PackedByteArray("AAABAPf/AAAFAAAAAAABAPj/AAAFAAEAAAABAPn/AAAFAAEAAAABAPr/AAAFAAEAAAABAPv/AAAFAAEAAAABAPz/AAAFAAEAAAABAP3/AAAFAAEAAAABAP7/AAAFAAEAAAABAP//AAAFAAEAAAD6//7/AAADAAEAAAD6////AAADAAEAAAD6//f/AAADAAAAAAD2//j/AAADAAAAAAD2//n/AAADAAEAAAD2//r/AAADAAEAAAD2//v/AAADAAEAAAD2//z/AAADAAEAAAD2//3/AAADAAIAAAD3/wAAAAADAAAAAAD3/wEAAAADAAEAAAD3/wIAAAADAAEAAAD3/wMAAAADAAEAAAD3/wQAAAADAAEAAAD3/wUAAAADAAIAAAD4/wQAAAAFAAEAAAD4/wUAAAAFAAIAAAD9/wQAAAADAAEAAAD9/wUAAAADAAIAAAACAAIAAAADAAAAAAACAAMAAAAFAAEAAAACAAQAAAAFAAEAAAACAAUAAAAFAAIAAAAFAAAAAAAFAAAAAAAFAAEAAAAGAAIAAAD7//f/AAAEAAAAAAD8//f/AAAEAAAAAAD9//f/AAAEAAAAAAD+//f/AAAEAAAAAAD///f/AAAEAAAAAAAAAPf/AAAEAAAAAAD4/wAAAAAEAAAAAAD5/wAAAAAEAAAAAAD3//j/AAAEAAAAAAD4//j/AAAEAAAAAAD5//j/AAAEAAAAAAACAAAAAAAEAAAAAAADAAAAAAAEAAAAAAAEAAAAAAAEAAAAAAD+/wUAAAAEAAIAAAD//wUAAAAEAAIAAAAAAAUAAAAEAAIAAAABAAUAAAAEAAIAAAD5/wMAAAAEAAIAAAD6/wMAAAAEAAIAAAD7/wMAAAAEAAIAAAD8/wMAAAAEAAIAAAD3//3/AAAEAAIAAAD4//3/AAAEAAIAAAD5//3/AAAEAAIAAAD6//j/AAAFAAIAAAD4/wMAAAADAAAAAAD6/wAAAAAFAAIAAAD6//3/AAAFAAAAAAD9/wMAAAAFAAAAAAABAAAAAAADAAIAAAAFAAIAAAAFAAIAAAADAAIAAAAEAAIAAAAEAAIAAAAEAAIAAAA=")
+tile_set = ExtResource("2_fht4w")
+
+[node name="Player" parent="." index="3"]
+position = Vector2(1856, 587)
+metadata/_edit_group_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Player" index="8"]
+texture = ExtResource("4_ojxfe")
+texture_scale = 3.0
+
+[node name="LightFanAnimation" parent="Lights" index="0" instance=ExtResource("4_mmdiy")]
+position = Vector2(1770, 573)
+
+[node name="LightFanAnimation2" parent="Lights" index="1" instance=ExtResource("4_mmdiy")]
+position = Vector2(-1531, -350)
+scale = Vector2(1.345, 1.345)
+
+[node name="LightFanAnimation3" parent="Lights" index="2" instance=ExtResource("4_mmdiy")]
+position = Vector2(-16, -2670)
+scale = Vector2(1.335, 1.335)
+
+[node name="SimpleLight" parent="Lights" index="3" instance=ExtResource("5_6qlqv")]
+position = Vector2(-684, 222)
+
+[node name="SimpleLight2" parent="Lights" index="4" instance=ExtResource("5_6qlqv")]
+position = Vector2(-1262, -946)
+
+[node name="SimpleLight3" parent="Lights" index="5" instance=ExtResource("5_6qlqv")]
+position = Vector2(-11, -3238)
+
+[node name="SimpleLight4" parent="Lights" index="6" instance=ExtResource("5_6qlqv")]
+position = Vector2(-2176, -1543)
+rotation = 1.5708
+
+[node name="SimpleLight5" parent="Lights" index="7" instance=ExtResource("5_6qlqv")]
+position = Vector2(-620, -1168)
+rotation = 1.5708
+
+[node name="SimpleLight6" parent="Lights" index="8" instance=ExtResource("5_6qlqv")]
+position = Vector2(-3008, 1728)
+rotation = 1.5708
+
+[node name="WallLight" parent="Lights" index="9" instance=ExtResource("6_rpl8f")]
+position = Vector2(122, 2057)
+rotation = 3.14159
+
+[node name="WallLight2" parent="Lights" index="10" instance=ExtResource("6_rpl8f")]
+position = Vector2(-1990, 1258)
+rotation = 3.14159
+
+[node name="WallLight3" parent="Lights" index="11" instance=ExtResource("6_rpl8f")]
+position = Vector2(-2865, -2842)
+
+[node name="WallLight4" parent="Lights" index="12" instance=ExtResource("6_rpl8f")]
+position = Vector2(-1297, -3223)
+
+[node name="WallLight5" parent="Lights" index="13" instance=ExtResource("6_rpl8f")]
+position = Vector2(491, -1088)
+rotation = 1.5708
+
+[node name="ExitGateArea" type="Area2D" parent="." index="5"]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitGateArea" index="0"]
+position = Vector2(2174, 582.5)
+shape = SubResource("RectangleShape2D_eqmt5")
+
+[node name="Item" parent="." index="7" instance=ExtResource("9_1v1dc")]
+position = Vector2(539, 1007)
+
+[connection signal="body_entered" from="ExitGateArea" to="." method="_on_exit_gate_area_body_entered"]

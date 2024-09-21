@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfmjcrqp5y5rc"]
+[gd_scene load_steps=5 format=3 uid="uid://bfmjcrqp5y5rc"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/laser.gd" id="1_2deqr"]
 [ext_resource type="Texture2D" uid="uid://dcuovn6rcxk13" path="res://graphics/projectiles/blue.png" id="1_mlh8l"]
+[ext_resource type="Texture2D" uid="uid://edglpxlr1k2i" path="res://graphics/lights/textures/circle.png" id="3_lgbfq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4sk40"]
 radius = 6.0
@@ -18,3 +19,17 @@ texture = ExtResource("1_mlh8l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_4sk40")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1.34766e-06, 0.88001, 0.880515, 1)
+energy = 3.0
+texture = ExtResource("3_lgbfq")
+offset = Vector2(0, -25)
+texture_scale = 0.2
+
+[node name="SelfDestructTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="SelfDestructTimer" to="." method="_on_timer_timeout"]
