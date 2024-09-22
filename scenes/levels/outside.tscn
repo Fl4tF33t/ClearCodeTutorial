@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dblagmt2clegc" path="res://scenes/objects/steam_vent.tscn" id="8_2jnsy"]
 [ext_resource type="PackedScene" uid="uid://cxn34477sr43u" path="res://scenes/objects/lights/light_fan_animation.tscn" id="9_iccrm"]
 [ext_resource type="PackedScene" uid="uid://cdq0jrv0plfq2" path="res://scenes/objects/gate.tscn" id="10_vsils"]
-[ext_resource type="PackedScene" uid="uid://dfhhn0sh0t7ss" path="res://scenes/items/item.tscn" id="12_e7bgo"]
-[ext_resource type="PackedScene" uid="uid://dchgq4xhd108w" path="res://scenes/objects/item_containers/crate.tscn" id="13_vr2p0"]
+[ext_resource type="PackedScene" uid="uid://b7or07ry36nim" path="res://scenes/enemies/scout.tscn" id="12_ye1qw"]
+[ext_resource type="PackedScene" uid="uid://dq55okd40bhej" path="res://scenes/enemies/bug.tscn" id="13_6etsf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w3qen"]
 resource_name = "walls"
@@ -57,6 +57,10 @@ color = Color(0.454524, 0.454524, 0.454524, 1)
 energy = 0.64
 blend_mode = 1
 
+[node name="Gate" parent="." index="2" instance=ExtResource("10_vsils")]
+z_index = 1
+position = Vector2(331, -407)
+
 [node name="Stones" type="Sprite2D" parent="Ground" index="0"]
 texture_repeat = 2
 position = Vector2(512, 676)
@@ -83,7 +87,7 @@ position = Vector2(5017, 1129)
 texture = ExtResource("6_wddu5")
 
 [node name="House" parent="Ground" index="5" instance=ExtResource("7_ywj7g")]
-position = Vector2(1175, 2712)
+position = Vector2(1319, 3024)
 rotation = 3.14159
 
 [node name="SteamVent" parent="Ground" index="6" instance=ExtResource("8_2jnsy")]
@@ -94,14 +98,23 @@ position = Vector2(-829, 1308)
 autoplay = "default"
 frame_progress = 0.199205
 
-[node name="Gate" parent="." index="2" instance=ExtResource("10_vsils")]
-position = Vector2(331, -407)
+[node name="Items" parent="." index="5"]
+metadata/_edit_lock_ = true
 
-[node name="Item" parent="." index="7" instance=ExtResource("12_e7bgo")]
-position = Vector2(-2328, 616)
+[node name="Scout" parent="Enemies" index="0" instance=ExtResource("12_ye1qw")]
+position = Vector2(-1319, 2040)
 
-[node name="Crate" parent="." index="8" instance=ExtResource("13_vr2p0")]
-position = Vector2(1488, 596)
+[node name="Scout2" parent="Enemies" index="1" instance=ExtResource("12_ye1qw")]
+position = Vector2(1649, 684)
 
-[connection signal="player_in_house" from="Ground/House" to="." method="_on_house_player_in_house"]
+[node name="Bug" parent="Enemies" index="2" instance=ExtResource("13_6etsf")]
+position = Vector2(-1137, 1157)
+
+[node name="Player" parent="." index="8"]
+z_index = 2
+
+[node name="Lights" parent="." index="9"]
+metadata/_edit_lock_ = true
+
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
+[connection signal="player_in_house" from="Ground/House" to="." method="_on_house_player_in_house"]

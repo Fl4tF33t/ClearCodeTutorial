@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6dptmr3appve"]
+[gd_scene load_steps=9 format=3 uid="uid://l7sgcom8poec"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_7r2y0"]
 [ext_resource type="Texture2D" uid="uid://c3ylilhwhtm3y" path="res://graphics/player/player.png" id="1_vbosq"]
@@ -26,7 +26,7 @@ color_ramp = SubResource("GradientTexture1D_rnm65")
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ccnw6"]
 polygon = PackedVector2Array(128, 6, 131, 11, 131, 26, 128, 32, 123, 32, 121, 36, 110, 36, 100, 43, 95, 43, 95, 52, 59, 53, 57, 41, 41, 41, 23, 47, 8, 56, -12, 61, -31, 58, -39, 45, -45, 32, -54, 20, -62, 1, -61, -23, -54, -32, -53, -38, -44, -45, -33, -47, -25, -54, -15, -58, -12, -55, -5, -60, 9, -60, 19, -62, 27, -61, 35, -49, 44, -40, 48, -30, 57, -29, 75, -11, 87, -12, 96, -5, 107, -4, 111, 1, 122, 1)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Entity"]]
 collision_mask = 31
 script = ExtResource("1_7r2y0")
 

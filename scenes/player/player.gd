@@ -44,9 +44,13 @@ func _process(_delta: float) -> void:
 		grenade.emit(pos, dir)
 	
 	move_and_slide()
+	Globals.player_position = global_position
 
 func _on_laser_timer_timeout() -> void:
 	can_laser = true
 
 func _on_grenade_timer_timeout() -> void:
 	can_grenade = true
+
+func hit():
+	Globals.health -= 10

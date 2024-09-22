@@ -1,16 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://drcudw1pdxnra"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_w8lo0"]
-[ext_resource type="PackedScene" uid="uid://c6dptmr3appve" path="res://scenes/player/player.tscn" id="2_bgygd"]
+[ext_resource type="PackedScene" uid="uid://l7sgcom8poec" path="res://scenes/player/player.tscn" id="2_bgygd"]
 [ext_resource type="PackedScene" uid="uid://bkhnu5xq7p1nu" path="res://scenes/user_interface/ui.tscn" id="3_g6kaf"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_w8lo0")
 
+[node name="Decals" type="Node2D" parent="."]
+
 [node name="Ground" type="Node2D" parent="."]
+
+[node name="Infestation" type="Node2D" parent="."]
+
+[node name="Items" type="Node2D" parent="."]
 
 [node name="Projectiles" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
+
+[node name="Enemies" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_bgygd")]
 position = Vector2(444, 532)

@@ -6,5 +6,8 @@ signal open(pos, dir)
 @onready var lid_sprite: Sprite2D = $LidSprite
 @onready var spawn_positions: Node2D = $SpawnPositions
 
+var opened:= false
+
 func hit():
-	lid_sprite.hide()
+	if not opened:
+		lid_sprite.hide()

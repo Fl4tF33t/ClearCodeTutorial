@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://scenes/objects/item_containers/item_container.gd" id="1_rxfcg"]
 
 [node name="ItemContainer" type="StaticBody2D" groups=["Container"]]
+collision_layer = 4
+collision_mask = 11
 script = ExtResource("1_rxfcg")
 
 [node name="BaseSprite" type="Sprite2D" parent="."]
