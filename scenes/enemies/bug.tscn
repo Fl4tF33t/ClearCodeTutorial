@@ -1,7 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://dq55okd40bhej"]
+[gd_scene load_steps=43 format=3 uid="uid://dq55okd40bhej"]
 
 [ext_resource type="Texture2D" uid="uid://bq6sk08jqlom6" path="res://graphics/enemies/bug/attack/00010.png" id="1_msl1p"]
 [ext_resource type="Script" path="res://scenes/enemies/bug.gd" id="1_p8nce"]
+[ext_resource type="Shader" path="res://scenes/enemies/bug.gdshader" id="2_ddhnn"]
 [ext_resource type="Texture2D" uid="uid://6y0ccaq6v2sk" path="res://graphics/enemies/bug/attack/00011.png" id="2_j1hhs"]
 [ext_resource type="Texture2D" uid="uid://c6w5gwunlh5hs" path="res://graphics/enemies/bug/attack/00012.png" id="3_wttol"]
 [ext_resource type="Texture2D" uid="uid://37lvurkp6g6k" path="res://graphics/enemies/bug/attack/00013.png" id="4_l8xfd"]
@@ -31,6 +32,12 @@
 [ext_resource type="Texture2D" uid="uid://bgdn15tkkwyd7" path="res://graphics/enemies/bug/walk/00006.png" id="28_spy5p"]
 [ext_resource type="Texture2D" uid="uid://cvevf7wb3utbp" path="res://graphics/enemies/bug/walk/00007.png" id="29_nomd6"]
 [ext_resource type="Texture2D" uid="uid://dvjhusq18rw0c" path="res://graphics/enemies/bug/walk/00008.png" id="30_hr7pw"]
+[ext_resource type="Texture2D" uid="uid://d1nwu4x0bpdcn" path="res://graphics/explosions/grunge.png" id="33_sxd3m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g1sij"]
+shader = ExtResource("2_ddhnn")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/progress = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ndhh5"]
 animations = [{
@@ -145,12 +152,36 @@ radius = 111.072
 radius = 38.0
 height = 136.0
 
-[node name="Bug" type="CharacterBody2D"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u8ft1"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_o6ujg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6p5pm"]
+curve = SubResource("Curve_o6ujg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yjwcv"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_6p5pm")
+anim_offset_max = 1.0
+
+[node name="Bug" type="CharacterBody2D" groups=["Entity"]]
 collision_layer = 2
 collision_mask = 11
 script = ExtResource("1_p8nce")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_g1sij")
 rotation = 1.5708
 scale = Vector2(0.07, 0.07)
 sprite_frames = SubResource("SpriteFrames_ndhh5")
@@ -177,11 +208,27 @@ shape = SubResource("CapsuleShape2D_htscq")
 [node name="Timers" type="Node" parent="."]
 
 [node name="AttackTimer" type="Timer" parent="Timers"]
+one_shot = true
 
 [node name="HitTimer" type="Timer" parent="Timers"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Particles" type="Node2D" parent="."]
+
+[node name="HitParticles" type="GPUParticles2D" parent="Particles"]
+modulate = Color(0.109371, 0.201038, 0.158287, 1)
+material = SubResource("CanvasItemMaterial_u8ft1")
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_yjwcv")
+texture = ExtResource("33_sxd3m")
+
+[node name="DeathParticles" type="GPUParticles2D" parent="Particles"]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="NoticeArea2D" to="." method="_on_notice_area_2d_body_entered"]
 [connection signal="body_exited" from="NoticeArea2D" to="." method="_on_notice_area_2d_body_exited"]
 [connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
 [connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]
+[connection signal="timeout" from="Timers/AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Timers/HitTimer" to="." method="_on_hit_timer_timeout"]
