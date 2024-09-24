@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://4oiv62nxnjpd"]
+
+[ext_resource type="Script" path="res://scenes/enemies/car.gd" id="1_52yox"]
+[ext_resource type="Texture2D" uid="uid://ctl7fdjcxwu0c" path="res://graphics/car/main.png" id="1_udntk"]
+[ext_resource type="Texture2D" uid="uid://dfols1ql1m611" path="res://graphics/car/turret.png" id="3_7hpjw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a3730"]
+radius = 1683.16
+
+[node name="Car" type="PathFollow2D" groups=["Entity"]]
+script = ExtResource("1_52yox")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 2
+collision_mask = 11
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+polygon = PackedVector2Array(146, 154, 170, 116, 190, 79, 187, -37, 186, -95, 173, -122, 143, -161, 116, -170, 8, -168, 8, -120, -59, -134, -89, -105, -91, -175, -231, -180, -230, -106, -230, -75, -233, -55, -299, -40, -298, 30, -234, 49, -229, 74, -229, 110, -226, 167, -101, 177, -89, 102, -59, 132, -1, 122, 3, 165, 112, 170)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_udntk")
+
+[node name="Turret" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Turret"]
+rotation = 1.5708
+texture = ExtResource("3_7hpjw")
+
+[node name="NoticeArea" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoticeArea"]
+shape = SubResource("CircleShape2D_a3730")
+
+[connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
+[connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]
