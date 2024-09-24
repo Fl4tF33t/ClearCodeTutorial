@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 [gd_scene load_steps=17 format=4 uid="uid://cmohiht4n72m2"]
-=======
-[gd_scene load_steps=20 format=4 uid="uid://cmohiht4n72m2"]
->>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" uid="uid://drcudw1pdxnra" path="res://scenes/levels/level.tscn" id="1_41r73"]
 [ext_resource type="Texture2D" uid="uid://ccj1y56xlhrq3" path="res://graphics/ground/stones.png" id="2_3qcp3"]
@@ -17,11 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://cdq0jrv0plfq2" path="res://scenes/objects/gate.tscn" id="10_vsils"]
 [ext_resource type="PackedScene" uid="uid://b7or07ry36nim" path="res://scenes/enemies/scout.tscn" id="12_ye1qw"]
 [ext_resource type="PackedScene" uid="uid://dq55okd40bhej" path="res://scenes/enemies/bug.tscn" id="13_6etsf"]
-<<<<<<< Updated upstream
-=======
-[ext_resource type="PackedScene" uid="uid://nca4xifio52t" path="res://scenes/enemies/drone.tscn" id="14_6fqp1"]
-[ext_resource type="PackedScene" uid="uid://4oiv62nxnjpd" path="res://scenes/enemies/car.tscn" id="15_0c0ph"]
->>>>>>> Stashed changes
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w3qen"]
 resource_name = "walls"
