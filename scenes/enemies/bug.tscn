@@ -177,7 +177,7 @@ anim_offset_max = 1.0
 
 [node name="Bug" type="CharacterBody2D" groups=["Entity"]]
 collision_layer = 2
-collision_mask = 11
+collision_mask = 15
 script = ExtResource("1_p8nce")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -222,8 +222,6 @@ material = SubResource("CanvasItemMaterial_u8ft1")
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_yjwcv")
 texture = ExtResource("33_sxd3m")
-
-[node name="DeathParticles" type="GPUParticles2D" parent="Particles"]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="NoticeArea2D" to="." method="_on_notice_area_2d_body_entered"]

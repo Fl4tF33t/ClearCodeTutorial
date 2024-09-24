@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://cmohiht4n72m2"]
+[gd_scene load_steps=21 format=4 uid="uid://cmohiht4n72m2"]
 
 [ext_resource type="PackedScene" uid="uid://drcudw1pdxnra" path="res://scenes/levels/level.tscn" id="1_41r73"]
 [ext_resource type="Texture2D" uid="uid://ccj1y56xlhrq3" path="res://graphics/ground/stones.png" id="2_3qcp3"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cdq0jrv0plfq2" path="res://scenes/objects/gate.tscn" id="10_vsils"]
 [ext_resource type="PackedScene" uid="uid://b7or07ry36nim" path="res://scenes/enemies/scout.tscn" id="12_ye1qw"]
 [ext_resource type="PackedScene" uid="uid://dq55okd40bhej" path="res://scenes/enemies/bug.tscn" id="13_6etsf"]
-[ext_resource type="PackedScene" uid="uid://nca4xifio52t" path="res://scenes/enemies/drone.tscn" id="14_6fqp1"]
+[ext_resource type="PackedScene" uid="uid://ctguhp5cwkd6k" path="res://scenes/enemies/hunter.tscn" id="14_dsnjq"]
 [ext_resource type="PackedScene" uid="uid://4oiv62nxnjpd" path="res://scenes/enemies/car.tscn" id="15_0c0ph"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w3qen"]
@@ -21,15 +21,25 @@ resource_name = "walls"
 texture = ExtResource("3_4pw1g")
 texture_region_size = Vector2i(390, 390)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-65.7609, -66.468, 195, -62, 195, 64, -65.7609, 62.2254)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-195, -59, 195, -62, 195, 64, -195, 61)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(65.7609, 66.468, -195, 62, -195, -64, 65.7609, -62.2254)
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(66.468, -65.7609, 62, 195, -64, 195, -62.2254, -65.7609)
 1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-57, -64, 195, -62, 195, 64, 59, 56, 63, 195, -65, 195)
 2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -57, 62, 195, -64, 195, -56, 59, -195, 63, -195, -65)
 0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-59, 195, -62, -195, 64, -195, 61, 195)
 1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 57, -62, -195, 64, -195, 56, -59, 195, -63, 195, 65)
 2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(57, 64, -195, 62, -195, -64, -59, -56, -63, -195, 65, -195)
 0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-66.468, 65.7609, -62, -195, 64, -195, 62.2254, 65.7609)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2iv70"]
 resource_name = "soil"
@@ -47,6 +57,8 @@ texture_region_size = Vector2i(390, 390)
 
 [sub_resource type="TileSet" id="TileSet_ohaus"]
 tile_size = Vector2i(390, 390)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 11
 sources/0 = SubResource("TileSetAtlasSource_w3qen")
 sources/1 = SubResource("TileSetAtlasSource_2iv70")
 
@@ -55,6 +67,11 @@ _data = {
 "points": PackedVector2Array(623.296, 539.391, -623.296, -539.391, 432, 2243, -563.363, -377.573, 563.363, 377.573, -448, 3947, -769.736, 213.816, 769.736, -213.816, 1880, 4507, 106.908, 477.522, -106.908, -477.522, 2576, 3283, 441.886, -49.8903, -441.886, 49.8903, 1888, 2667, 370.614, -7.12719, -370.614, 7.12719, 960, 3755, 270.829, 356.843, -270.829, -356.843, 432, 2243)
 }
 point_count = 7
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ghrww"]
+vertices = PackedVector2Array(5156.95, 1844.82, 5149.04, 3586.6, 4563.93, 3012.09, 4584.18, 2831, 4756.86, 1837.82, 3618.09, 3002.88, 4446.44, 3630.58, 2678.8, 3231.2, 3989.04, 1866.13, 4007.64, 2017.63, 2893.75, 1982.02, 3852.35, 1852.06, -477.242, 1638.14, -258.602, 424.773, 2786.3, 342, 3844.61, 1654.23, 4178.65, 1646.78, 5149, 263.328, 4765.14, 1234, 3021.07, 2871.93, 3010.17, 2245.18, 4200.36, 2266.18, 3648.62, 2831, 5149, 1234, 4375.45, 5112.28, 2616.5, 5165.7, 2599.01, 4816)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 2, 1, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(11, 10, 12, 13, 14, 15), PackedInt32Array(16, 15, 14, 17, 18), PackedInt32Array(19, 20, 21, 22), PackedInt32Array(17, 23, 18), PackedInt32Array(21, 16, 18, 4, 3), PackedInt32Array(21, 3, 22), PackedInt32Array(19, 22, 5, 7), PackedInt32Array(6, 24, 25, 26, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(3657, 2841, 4573, 2841, 4555, 3002, 3630, 2993, 3657, 2841, 3011, 2868, 2669, 3227, 2589, 4816, 2607, 5176, 4385, 5122, 4456, 3640, 5159, 3596, 5167, 1835, 4767, 1828, 4775, 1244, 5159, 1244, 5159, 253, 2786, 332, -267, 415, -489, 1647, 2893, 1992, 4019, 2028, 3998, 1857, 3862, 1843, 3855, 1664, 4169, 1657, 4190, 2256, 3000, 2235, 3011, 2868)])
 
 [node name="Outside" instance=ExtResource("1_41r73")]
 script = ExtResource("2_kf7tl")
@@ -81,7 +98,7 @@ tile_map_data = PackedByteArray("AAAMAAQAAQAAAAIAAAAMAAMAAQAAAAAAAAANAAMAAQABAAE
 tile_set = SubResource("TileSet_ohaus")
 
 [node name="WallsTileMap" type="TileMapLayer" parent="Ground" index="2"]
-tile_map_data = PackedByteArray("AAAFAAAAAAABAAIAAAAFAP//AAAAAAIAAAAFAP7/AAAAAAIAAAAFAP3/AAAAAAEAAAD8//3/AAAAAAEAAAD8//7/AAAAAAIAAAD8////AAAAAAIAAAD8/wAAAAACAAIAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAAAAAABAAAAAAALAAAAAAABAAAAAAAMAAAAAAABAAAAAAANAAAAAAACAAEAAAANAAEAAAAAAAIAAAANAAIAAAAAAAIAAAD7/wAAAAABAAAAAAD6/wAAAAABAAAAAAD5/wAAAAABAAAAAAD4/wAAAAABAAAAAAD3/wAAAAABAAAAAAD2/wAAAAABAAEAAAD2/wEAAAAAAAIAAAD2/wIAAAAAAAIAAAD2/wMAAAABAAIAAAD3/wMAAAABAAAAAAD4/wMAAAACAAIAAAD4/wIAAAABAAEAAAD5/wIAAAABAAAAAAD6/wIAAAACAAEAAAD6/wMAAAAAAAIAAAD6/wQAAAAAAAIAAAD6/wUAAAAAAAIAAAD6/wYAAAAAAAIAAAD6/wcAAAAAAAIAAAD6/wgAAAACAAIAAAD3/wgAAAABAAEAAAD5/wgAAAABAAAAAAD4/wgAAAABAAAAAAD3/wkAAAAAAAIAAAD3/woAAAAAAAIAAAD3/wsAAAAAAAIAAAD3/wwAAAAAAAIAAAD3/w0AAAABAAIAAAD4/w0AAAABAAAAAAD5/w0AAAABAAAAAAD6/w0AAAABAAAAAAD7/w0AAAABAAAAAAD8/w0AAAABAAAAAAD9/w0AAAABAAAAAAD+/w0AAAACAAEAAAD+/w4AAAABAAIAAAAAAA4AAAACAAIAAAD//w4AAAABAAAAAAAAAA0AAAAAAAIAAAAAAAwAAAABAAEAAAABAAwAAAABAAAAAAACAAwAAAABAAAAAAADAAwAAAABAAAAAAAEAAwAAAABAAAAAAAFAAwAAAABAAAAAAAGAAwAAAACAAEAAAAGAA0AAAABAAIAAAAHAA0AAAABAAAAAAAIAA0AAAABAAAAAAAJAA0AAAABAAAAAAAKAA0AAAABAAAAAAALAA0AAAACAAIAAAALAAwAAAAAAAIAAAALAAsAAAAAAAIAAAALAAoAAAAAAAIAAAALAAkAAAABAAEAAAAMAAkAAAABAAAAAAANAAkAAAACAAIAAAANAAgAAAAAAAIAAAANAAYAAAAAAAIAAAANAAcAAAAAAAIAAAANAAQAAAACAAEAAAANAAUAAAAAAAIAAAAMAAQAAAABAAIAAAAMAAMAAAABAAEAAAANAAMAAAACAAIAAAA=")
+tile_map_data = PackedByteArray("AAAFAAAAAAABAAIAAAAFAP//AAAAAAIAAAAFAP7/AAAAAAIAAAAFAP3/AAAAAAEAAAD8//3/AAAAAAEAAAD8//7/AAAAAAIAAAD8////AAAAAAIAAAD8/wAAAAACAAIAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAAAAAABAAAAAAALAAAAAAABAAAAAAAMAAAAAAABAAAAAAANAAAAAAACAAEAAAANAAEAAAAAAAIAAAANAAIAAAAAAAIAAAD7/wAAAAABAAAAAAD6/wAAAAABAAAAAAD5/wAAAAABAAAAAAD4/wAAAAABAAAAAAD3/wAAAAABAAAAAAD2/wAAAAABAAEAAAD2/wEAAAAAAAIAAAD2/wIAAAAAAAIAAAD2/wMAAAABAAIAAAD3/wMAAAABAAAAAAD4/wMAAAACAAIAAAD4/wIAAAABAAEAAAD5/wIAAAABAAAAAAD6/wIAAAACAAEAAAD6/wMAAAAAAAIAAAD6/wQAAAAAAAIAAAD6/wUAAAAAAAIAAAD6/wYAAAAAAAIAAAD6/wcAAAAAAAIAAAD6/wgAAAACAAIAAAD3/wgAAAABAAEAAAD5/wgAAAABAAAAAAD4/wgAAAABAAAAAAD3/wkAAAAAAAIAAAD3/woAAAAAAAIAAAD3/wsAAAAAAAIAAAD3/wwAAAAAAAIAAAD3/w0AAAABAAIAAAD4/w0AAAABAAAAAAD5/w0AAAABAAAAAAD6/w0AAAABAAAAAAD7/w0AAAABAAAAAAD8/w0AAAABAAAAAAD9/w0AAAABAAAAAAD+/w0AAAACAAEAAAD+/w4AAAABAAIAAAAAAA4AAAACAAIAAAD//w4AAAABAAAAAAAAAA0AAAAAAAIAAAAAAAwAAAABAAEAAAABAAwAAAABAAAAAAACAAwAAAABAAAAAAADAAwAAAABAAAAAAAEAAwAAAABAAAAAAAFAAwAAAABAAAAAAAGAAwAAAACAAEAAAAGAA0AAAABAAIAAAAHAA0AAAABAAAAAAAIAA0AAAABAAAAAAAJAA0AAAABAAAAAAAKAA0AAAABAAAAAAALAA0AAAACAAIAAAALAAwAAAAAAAIAAAALAAsAAAAAAAIAAAALAAoAAAAAAAIAAAALAAkAAAABAAEAAAAMAAkAAAABAAAAAAANAAkAAAACAAIAAAANAAgAAAAAAAIAAAANAAYAAAAAAAIAAAANAAcAAAAAAAIAAAANAAQAAAACAAEAAAANAAUAAAAAAAIAAAAMAAQAAAABAAIAAAAMAAMAAAABAAEAAAANAAMAAAACAAIAAAAKAAUAAAACAAIAAAAJAAUAAAABAAAAAAAIAAUAAAABAAAAAAAHAAUAAAABAAEAAAAHAAYAAAAAAAIAAAAHAAcAAAAAAAIAAAAKAAQAAAACAAEAAAALAAcAAAACAAAAAAAKAAcAAAABAAAAAAAJAAcAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_ohaus")
 
 [node name="Decoration" type="Sprite2D" parent="Ground" index="3"]
@@ -124,6 +141,9 @@ position = Vector2(1649, 684)
 [node name="Bug" parent="Enemies" index="2" instance=ExtResource("13_6etsf")]
 position = Vector2(-1137, 1157)
 
+[node name="Hunter" parent="Enemies" index="3" instance=ExtResource("14_dsnjq")]
+position = Vector2(3519, 1030)
+
 [node name="Player" parent="." index="8"]
 z_index = 2
 
@@ -136,6 +156,11 @@ curve = SubResource("Curve2D_vl1fy")
 [node name="Car" parent="Path2D" index="0" instance=ExtResource("15_0c0ph")]
 position = Vector2(432, 2243)
 rotation = -2.42823
+
+[node name="LevelBarrier" type="Node2D" parent="." index="12"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="13"]
+navigation_polygon = SubResource("NavigationPolygon_ghrww")
 
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
 [connection signal="player_in_house" from="Ground/House" to="." method="_on_house_player_in_house"]
